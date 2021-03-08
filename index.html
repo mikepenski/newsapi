@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>news API | SuperCode</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <header>
+
+        <div class="container">
+
+            <a href="index.html" class="logo">
+                <h1>news API</h1>
+            </a>
+
+            <form id="site-search" name="search">
+                <input type="search" id="seachInput" name="q" aria-label="Search through site content">
+                <button>Search</button>
+            </form>
+
+        </div>
+
+    </header>
+    <main>
+
+       <div class="container">
+
+        <div class="meta d-flex mb-4">
+
+            <div id="totalResults" class="mr-4"></div>
+            <div>pages: <span id="current-page"></span><span id="item-pages"></span></div>
+
+        </div>
+           
+        <div class="d-flex mb-4">
+
+            <select name="country" id="country-filter" class="mr-4">
+                <option selected disabled>country</option>
+                <option value="de">German</option>
+                <option value="us">United Kingdom</option>
+                <option value="nl">Netherlands</option>
+                <option value="fr">France</option>
+                <option value="it">Italy</option>
+              </select>
+
+              <select name="medium" id="medium-filter">
+                <option selected disabled>Medium</option>
+                <option value="Terracotta">Terracotta</option>
+            </select>
+
+        </div>
+
+       
+
+       </div>
+       
+
+        <section id="posts">
+
+            <div class="container">
+
+                <div class="row">
+    
+                 
+                </div>
+
+                <button id="loadmore">load more</button>
+    
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
