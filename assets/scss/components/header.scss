@@ -3,10 +3,16 @@ header{
     left: 0;
     top: 0;
     width: 100%;
-    padding: 2rem 2rem 2rem 7rem;
+    padding: 1rem 0;
     background: white;
-    > .container{
+    z-index: 10;
+    .container:first-of-type{
         display: flex;
         justify-content: space-between;
+        .logo{
+            img{
+                transition: width 1s;
+            }
+        }
     }
 }

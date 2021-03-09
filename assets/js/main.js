@@ -31,6 +31,7 @@ const siteSearch = document.querySelector("#site-search");
 const countryFilter = document.querySelector("#country-filter");
 
 let type;
+let pagesize = 16
 
 let resource = "top-headlines";
 //let resource = "everything";
@@ -38,7 +39,7 @@ let resource = "top-headlines";
 //get - set query filter helper function
 var queryStringObject = {
     country: "de",
-    pageSize: 12,
+    pageSize: pagesize,
     page: 1,
     //q: "tesla",
 };
@@ -57,7 +58,10 @@ countryFilter.addEventListener("change", () => {
     resource = "top-headlines";
 
     queryStringObject["country"] = countryFilter.value;
-    queryStringObject["pageSize"] = 12;
+    queryStringObject["pageSize"] = pagesize;
+    delete queryStringObject.q;
+
+    document.querySelector("#seachInput").value = "";
 
     var queryString = JSON.stringify(queryStringObject);
     queryString = queryString.replaceAll(':', '=').replaceAll(',', '&').replaceAll('"', '').slice(1, -1);
@@ -162,9 +166,9 @@ let fetchPosts =  async (type, resource, queryString) => {
             html += `<img src="${element.urlToImage}" />`;
             html += `</div>`;
             html += `<div clas="title">${element.title}</div>`;
-            html += `<div class="text-center py-4 align-items-end d-flex flex-wrap">`;
+            html += `<div class="text-center py-4 align-items-end d-flex flex-wrap justify-content-center w-100">`;
             html += `<div class="date mb-4">${element.publishedAt}</div>`;
-            html += `<a href="${element.url}" target="_blank" rel="nofollow" class="btn btn-secondary">read more</a>`;
+            html += `<a href="${element.url}" target="_blank" rel="nofollow" class="btn btn-dark">read more</a>`;
             html += `</div>`;
             html += `</div>`;
 
@@ -191,9 +195,9 @@ loadmoreButton.addEventListener("click", (e) => {
 
     e.preventDefault();
 
-    type = "loadmore";
+        type = "loadmore";
 
-        queryStringObject["pageSize"] = queryStringObject["pageSize"] + 12;
+        queryStringObject["pageSize"] = queryStringObject["pageSize"] + pagesize;
 
         var queryString = JSON.stringify(queryStringObject);
         queryString = "&" +queryString.replaceAll(':', '=').replaceAll(',', '&').replaceAll('"', '').slice(1, -1);
